@@ -17,7 +17,7 @@ This repository provides the full implementation of the proposed method, along w
 ├── Mountainous/               # Result on Mountainous Field Data  
 ├── Plain/               # Result on Plain Field Data  
 ├── Synthetic/               # Result on Synthetic Field Data  
-├── scripts/            # Core algorithms and training/inference scripts  
+├── src/            # Core algorithms and training/inference scripts  
 ├── requirements.txt    # Python dependencies  
 ├── README.md           # Project documentation (this file)  
 
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 3. Run the main script  
   
 📊 Reproducing Results  
-To reproduce the results in the paper, please refer to the instructions in scripts/.  
+To reproduce the results in the paper, please refer to the instructions in README.  
 
 
 📬 Contact  
