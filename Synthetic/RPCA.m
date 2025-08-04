@@ -1,5 +1,7 @@
 output = ReadSegy('result_of_RPCA.sgy', output);
 cancha = ReadSegy('residual_of_RPCA.sgy', cancha);
+load('matrix.mat');
+cancha = cancha .* matrix;% mask the missing trace
 
 figure;
 imagesc(output);
@@ -15,8 +17,7 @@ yticklabels({'1000', '2000', '3000', '4000'});
 h = colorbar;
 set(h, 'FontSize', 20);
 
-load('matrix.mat');
-cancha = cancha .* matrix;% mask the missing trace
+
 
 figure;
 imagesc(cancha);
