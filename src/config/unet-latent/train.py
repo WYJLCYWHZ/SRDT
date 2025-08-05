@@ -24,6 +24,11 @@ from data import create_dataloader, create_dataset
 from data.data_sampler import DistIterSampler
 
 from data.util import bgr2ycbcr
+import os
+
+local_rank = int(os.environ.get("LOCAL_RANK", 0))
+torch.cuda.set_device(local_rank)
+
 
 # torch.autograd.set_detect_anomaly(True)
 
@@ -49,7 +54,7 @@ def main():
     parser.add_argument(
         "--launcher", choices=["none", "pytorch"], default="none", help="job launcher"
     )
-    parser.add_argument("--local_rank", type=int, default=0)
+    # parser.add_argument("--local_rank", type=int, default=0)
     args = parser.parse_args()
     opt = option.parse(args.opt, is_train=True)
 

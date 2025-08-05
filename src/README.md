@@ -19,16 +19,13 @@ pip install -r requirements.txt
 3. Run the main script  
   
 cd src/config/unet-latent
-python train.py -opt=options/train/train_restoring.yml
+python train.py -opt=options/train/train_restore.yml
 
-cd src/config/latent-seismic-restoring
+cd src/config/latent-seismic-restore
 python train.py -opt=options/train/nasde.yml
 
-cd src/config/latent-seismic-restoring
-python test.py -opt=options/train/nasde.yml
-
-📊 Reproducing Results  
-To reproduce the results in the paper, please refer to the instructions in README.  
+cd src/config/latent-seismic-restore
+python test.py -opt=options/test/nasde.yml
 
 
 📬 Contact  

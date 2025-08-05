@@ -1,0 +1,35 @@
+name: latent_restore
+suffix: ~  # add suffix to saved images
+model: latent
+distortion: restore
+gpu_ids: [0]
+
+degradation:
+  # for denoising
+  sigma: 25
+  noise_type: G # Gaussian noise: G
+
+  # for super-resolution
+  scale: 4
+
+datasets:
+  test1:
+    name: restore
+    mode: LQGT
+    dataroot_GT: /codes/config/unet-latent/datasets/restore/test/GT256
+    dataroot_LQ: /codes/config/unet-latent/datasets/restore/test/LQ256
+
+#### network structures
+network_G:
+  which_model_G: UNet
+  setting:
+    in_ch: 1
+    out_ch: 1
+    ch: 8
+    ch_mult: [4, 8, 8, 16]
+    embed_dim: 8
+
+#### path
+path:
+  pretrain_model_G: pretrained_models/latent_restore.pth
+

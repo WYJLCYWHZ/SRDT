@@ -189,7 +189,22 @@ class LQGTDataset(data.Dataset):
         if LR_path is None:
             LR_path = GT_path
 
-        return {"LQ": img_LR, "GT": img_GT, "LQ_path": LR_path, "GT_path": GT_path}
+        # 提取任务名（假设文件名如 a1_denoise.mat）
+        base_name = os.path.basename(GT_path)
+        if '_' in base_name:
+            task_name = base_name.split('_')[-1].split('.')[0]
+        else:
+            task_name = 'default'
+
+        return {
+            "LQ": img_LR,
+            "GT": img_GT,
+            "LQ_path": LR_path,
+            "GT_path": GT_path,
+            "task_name": task_name,  # 新增
+        }
+
+        # return {"LQ": img_LR, "GT": img_GT, "LQ_path": LR_path, "GT_path": GT_path}
 
     def __len__(self):
         return len(self.GT_paths)
